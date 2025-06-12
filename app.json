@@ -1,0 +1,50 @@
+{
+  "expo": {
+    "name": "Anx Streak",
+    "slug": "anx-streak-app-v2",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/anx/anx.png",
+    "scheme": "anxstreakappv2",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": true,
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/images/anx/anx.png",
+        "backgroundColor": "#ffffff"
+      },
+      "edgeToEdgeEnabled": true,
+      "package": "com.cursewlx.anxstreakappv2"
+    },
+    "web": {
+      "bundler": "metro",
+      "output": "static",
+      "favicon": "./assets/images/anx/anx.png"
+    },
+    "plugins": [
+      "expo-router",
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/images/anx/anx.png",
+          "imageWidth": 200,
+          "resizeMode": "contain",
+          "backgroundColor": "#ffffff"
+        }
+      ],
+      "expo-sqlite"
+    ],
+    "experiments": {
+      "typedRoutes": true
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "a7eed3b1-ee3c-4a36-ba8d-28cc7f07858c"
+      }
+    }
+  }
+}
