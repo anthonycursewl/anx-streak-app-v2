@@ -1,22 +1,37 @@
-import BottomTabs from "@/components/BottomTabs/Tabs";
-import { StatusBar } from 'expo-status-bar';
-import { tabs } from "../components/TabsOnly/TabsOnly";
-import { mainStyles } from "../screens/mainStyles";
+import Button from "@/components/Button/Button";
+import CustomText from "@/components/CustomText/CustomText";
+import { GradientText } from "@/components/GradientText/GradientText";
+import LayoutScreen from "@/components/Layout/LayoutScreen";
+import { router } from "expo-router";
+import { Image, View } from "react-native";
 
 export default function Index() {
+  const goToLogin = () => {
+    router.replace('/auth/login')
+  }
+
   return (
-    <>
-      <StatusBar style="light" />
-      <BottomTabs 
-        tabs={tabs}
-        initialTab="home"
-        style={mainStyles.container}
-        tabBarStyle={mainStyles.tabBar}
-        tabItemStyle={mainStyles.tabItem}
-        activeTabItemStyle={mainStyles.activeTabItem}
-        textStyle={mainStyles.tabText}
-        activeTextStyle={mainStyles.activeTabText}
-        />
-    </>
+    <LayoutScreen>
+      <View style={{ justifyContent: 'center', alignItems: 'center', marginTop: 20, marginBottom: 20 }}>
+        <Image source={require('@/assets/images/anx/anx_transparent.png')} style={{ width: 180, height: 75, resizeMode: 'cover' }}/>
+      </View>
+
+      <View style={{ justifyContent: 'center', alignItems: 'center', gap: 20 }}>
+        <GradientText colors={['rgb(162, 104, 255)', 'rgb(255, 200, 221)', 'rgb(255, 141, 141)']} style={{ fontSize: 40, fontWeight: 'bold' }}>
+        Welcome to Anx Streak App!
+        </GradientText>
+      </View>
+
+      <View style={{ alignItems: 'flex-start', marginTop: 10 }}>
+        <CustomText style={{ fontSize: 20 }}>
+          Your journey to mental wellness starts here. There's no more bad days. Just a road where you can grow and progress.
+          Don't be afraid. 
+        </CustomText>
+      </View>
+
+      <View style={{ position: 'absolute', bottom: 20, alignItems: 'center', width: '100%' }}>
+        <Button style={{ width:'100%' }} onPress={goToLogin}>Get Started</Button>
+      </View>
+    </LayoutScreen>
   );
 }

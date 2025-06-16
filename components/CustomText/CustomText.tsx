@@ -4,6 +4,8 @@ type CustomTextProps = {
     children: React.ReactNode;
     style?: TextStyle | TextStyle[];
     onPress?: (event: GestureResponderEvent) => void;
+    color?: string;
+    weight?: 'normal' | '600' | 'bold' | '100' | '200' | '300' | '400' | '500' | '700' | '800' | '900';
 };
 
 const styles = StyleSheet.create({
@@ -14,13 +16,19 @@ const styles = StyleSheet.create({
     }
 });
 
-export default function CustomText({ children, style, onPress }: CustomTextProps) {
+export default function CustomText({ children, style, onPress, color, weight }: CustomTextProps) {
+    const textStyle = [
+        styles.text,
+        color && { color },
+        weight && { fontWeight: weight },
+        style
+    ];
     if (onPress) {
         return (
             <TouchableOpacity onPress={onPress}>
-                <Text style={[styles.text, style]}>{children}</Text>
+                <Text style={textStyle}>{children}</Text>
             </TouchableOpacity>
         );
     }
-    return <Text style={[styles.text, style]}>{children}</Text>;
+    return <Text style={textStyle}>{children}</Text>;
 }

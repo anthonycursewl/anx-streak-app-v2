@@ -1,7 +1,23 @@
-import { KeyboardTypeOptions, StyleSheet, TextInput, TextStyle } from "react-native";
+import { KeyboardTypeOptions, StyleSheet, TextInput, TextStyle, TextInputProps } from "react-native";
 
-export default function Input({ placeholder, value, onChangeText, style, keyboardType = 'default' }: 
-    { placeholder: string, value: string, onChangeText: (text: string) => void, style?: TextStyle, keyboardType: string }) {
+type InputProps = Omit<TextInputProps, 'keyboardType'> & {
+    placeholder: string;
+    value: string;
+    onChangeText: (text: string) => void;
+    style?: TextStyle;
+    keyboardType?: KeyboardTypeOptions;
+    secureTextEntry?: boolean;
+};
+
+export default function Input({ 
+    placeholder, 
+    value, 
+    onChangeText, 
+    style, 
+    keyboardType = 'default',
+    secureTextEntry = false,
+    ...props 
+}: InputProps) {
     return (
         <TextInput
             placeholder={placeholder}
@@ -11,6 +27,8 @@ export default function Input({ placeholder, value, onChangeText, style, keyboar
             placeholderTextColor={'rgb(133, 133, 133)'}
             cursorColor={'rgb(124, 59, 199)'}
             keyboardType={keyboardType as KeyboardTypeOptions}
+            secureTextEntry={secureTextEntry}
+            {...props}
         />
     )
 }

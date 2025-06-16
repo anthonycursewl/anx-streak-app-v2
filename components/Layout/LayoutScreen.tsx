@@ -1,8 +1,10 @@
+import { StatusBar } from "expo-status-bar";
 import { SafeAreaView, StyleSheet, View } from "react-native";
 
 export default function LayoutScreen({ children }: { children: React.ReactNode }) {
     return (
         <SafeAreaView style={styles.layout}>
+            <StatusBar style="light" />
             <View style={styles.layoutContent}>
                 {children}
             </View>
