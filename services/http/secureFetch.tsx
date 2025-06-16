@@ -3,7 +3,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 interface options {
     method: string
-    body: any
+    body?: any
     content_type?: string
     stringify?: boolean
 }
@@ -27,7 +27,7 @@ export const secureFetch = async (URL: string, options: options = { method: 'GET
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${await AsyncStorage.getItem('token')}`
+                    'Authorization': `Bearer ${await AsyncStorage.getItem('refresh_token')}`
                 },
             })
 
