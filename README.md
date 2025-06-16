@@ -1,50 +1,89 @@
-# Welcome to your Expo app 👋
+# Anx Streak App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+The story behind this app is larger than you think, but I'm going to keep it short. I had to pass through a lot of things these months, and I wanted to create something that could help me and others. I started with the idea of creating a streak app, but I soon realized that I needed to create a full-fledged app to make it work. It's been hard months, because even if you're passing through bad moments, you gotta keep working hard. It kept me sad, and with a low energy to face my day. So for that reason I decided to make a strek app, to track my daily activities and give myself that extra push to keep going. I hope you find it useful.
 
-## Get started
+## 🚀 Technologies
 
-1. Install dependencies
+- **Framework**: React Native using Expo 
+- **Language**: TypeScript
+- **State Management**: Zustand
+- **HTTP Client**: secureFetch by me
+- **Authentication**: Custom auth flow with JWT
 
+## 🛠️ Getting Started
+
+### Prerequisites
+
+- Node.js 18.0.0 or later
+- npm or yarn
+
+### Installation
+
+1. Clone the repository
    ```bash
-   npm install
+   git clone https://github.com/anthonycursewl/anx-streak-app-v2.git
+   cd anx-streak-app-v2
    ```
 
-2. Start the app
+2. Install dependencies
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
 
+3. Fix broken dependencies
+   In order to fix broken dependencies, run the following command:
+   ```bash
+   npx expo install --fix
+   ```
+
+4. Run the development server
    ```bash
    npx expo start
    ```
 
-In the output, you'll find options to open the app in a
+5. Run the app
+   ```bash
+   npx expo run:android
+   # or
+   npx expo run:ios
+   ```
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+## 🏗️ Project Structure
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+> [!NOTE]
+> This app is file base routing, so it means that all folders inside app folder are routes. If you want to create a new route, just create a new folder inside app folder. If you want to create a new component, just create a new folder inside components folder and so on.
 
-## Get a fresh project
+- `/app` - Main application code with Expo Router
+  - `/auth` - Authentication related pages and components
+- `/services` - Business logic and API services
+  - `/stores` - Zustand stores
+  - `/http` - HTTP client and interceptors
+- `/config` - Application configuration
+- `/public` - Static files
 
-When you're ready, run:
+## 📦 Dependencies
 
-```bash
-npm run reset-project
-```
+- `expo` - The React Native Framework
+- `react` - Core React libraries
+- `typescript` - Type checking
+- `zustand` - State management
+- `secureFetch` - HTTP client
+- `expo-router` - Router for React Native
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## 🔒 Authentication
 
-## Learn more
+The app uses JWT-based authentication with secure HTTP-only cookies.
 
-To learn more about developing your project with Expo, look at the following resources:
+## 🤝 Contributing
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/name-of-your-feature`)
+3. Commit your changes (`git commit -m 'Add some changes'`)
+4. Push to the branch (`git push origin feature/name-of-your-feature`)
+5. Open a Pull Request
 
-## Join the community
+## 📄 License
 
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
