@@ -2,10 +2,10 @@
   "expo": {
     "name": "Anx Streak",
     "slug": "anx-streak-app-v2",
+    "scheme": "anxstreakappv2",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/anx/anx.png",
-    "scheme": "anxstreakappv2",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
