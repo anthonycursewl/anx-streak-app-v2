@@ -12,7 +12,6 @@ export default function Dashboard() {
 
     useEffect(() => {
         getUserDetails()
-        console.log(user)
     }, [])
 
     useEffect(() => {
