@@ -1,33 +1,19 @@
-import { KeyboardTypeOptions, StyleSheet, TextInput, TextStyle, TextInputProps } from "react-native";
+import { StyleSheet, TextInput, TextInputProps, TextStyle } from "react-native";
 
-type InputProps = Omit<TextInputProps, 'keyboardType'> & {
-    placeholder: string;
-    value: string;
-    onChangeText: (text: string) => void;
+type InputProps = TextInputProps & {
     style?: TextStyle;
-    keyboardType?: KeyboardTypeOptions;
-    secureTextEntry?: boolean;
 };
 
 export default function Input({ 
-    placeholder, 
-    value, 
-    onChangeText, 
-    style, 
-    keyboardType = 'default',
-    secureTextEntry = false,
+    style,
     ...props 
 }: InputProps) {
     return (
         <TextInput
-            placeholder={placeholder}
-            value={value}
-            onChangeText={onChangeText}
             style={[stylesInput.input, style]}
-            placeholderTextColor={'rgb(133, 133, 133)'}
-            cursorColor={'rgb(124, 59, 199)'}
-            keyboardType={keyboardType as KeyboardTypeOptions}
-            secureTextEntry={secureTextEntry}
+            placeholderTextColor="rgb(133, 133, 133)"
+            cursorColor="rgb(124, 59, 199)"
+            textAlignVertical={props.multiline ? 'top' : 'center'}
             {...props}
         />
     )
@@ -38,7 +24,7 @@ const stylesInput = StyleSheet.create({
         borderWidth: 1,
         borderColor: 'rgb(51, 51, 51)',
         backgroundColor: 'rgb(25, 25, 25)',
-        borderRadius: 30,
+        borderRadius: 15,
         padding: 15,
         marginBottom: 20,
         textAlignVertical: 'top',

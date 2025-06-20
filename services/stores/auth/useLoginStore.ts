@@ -1,6 +1,7 @@
 import { secureFetch } from '@/services/http/secureFetch';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { create } from 'zustand';
+import { router } from 'expo-router';
 
 // entities
 import { User } from '@/entities/User';
@@ -16,6 +17,7 @@ interface LoginStore {
     user: User;
     setUser: (user: User) => void;
     getUserDetails: () => Promise<User>;
+    logout: () => Promise<boolean>;
 }
 
 export const useLoginStore = create<LoginStore>((set, get) => ({
@@ -88,9 +90,34 @@ export const useLoginStore = create<LoginStore>((set, get) => ({
             setError(null)
             setUser(data)
 
+
             return data
         }
 
         return {} as User
+    },
+
+    /**
+     * Logout function
+     * Clears all auth data and returns a boolean indicating success
+     */
+    async logout(): Promise<boolean> {
+        try {
+            // Clear all stored tokens
+            await AsyncStorage.multiRemove(['token', 'refresh_token']);
+            
+            // Reset the auth state
+            set({ 
+                isAuthenticated: false,
+                user: {} as User,
+                error: null,
+                loading: false
+            });
+            
+            return true;
+        } catch (error) {
+            console.error('Error during logout:', error);
+            return false;
+        }
     }
 }))

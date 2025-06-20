@@ -2,13 +2,23 @@ import Button from "@/components/Button/Button";
 import CustomText from "@/components/CustomText/CustomText";
 import { GradientText } from "@/components/GradientText/GradientText";
 import LayoutScreen from "@/components/Layout/LayoutScreen";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { router } from "expo-router";
+import { useEffect } from "react";
 import { Image, View } from "react-native";
 
 export default function Index() {
-  const goToLogin = () => {
-    router.replace('/auth/login')
-  }
+
+  useEffect(() => {
+    const getToken = async () => {
+      const token = await AsyncStorage.getItem('token');
+      if (token) {
+        router.replace('/dashboard');
+      }
+    }
+
+    getToken();
+  }, [])
 
   return (
     <LayoutScreen>
@@ -30,7 +40,7 @@ export default function Index() {
       </View>
 
       <View style={{ position: 'absolute', bottom: 20, alignItems: 'center', width: '100%' }}>
-        <Button style={{ width:'100%' }} onPress={goToLogin}>Get Started</Button>
+        <Button style={{ width:'100%' }} onPress={() => router.replace('/auth/login')}>Get Started</Button>
       </View>
     </LayoutScreen>
   );

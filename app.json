@@ -13,8 +13,8 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/anx/anx_transparent.png",
-        "backgroundColor": "#ffffff"
+        "foregroundImage": "./assets/images/anx/anx_rd.png",
+        "backgroundColor": "#0b0b0b"
       },
       "edgeToEdgeEnabled": true,
       "package": "com.cursewlx.anxstreakappv2"
@@ -29,10 +29,10 @@
       [
         "expo-splash-screen",
         {
-          "image": "./assets/images/anx/anx.png",
+          "image": "./assets/images/anx/anx_rd.png",
           "imageWidth": 200,
           "resizeMode": "contain",
-          "backgroundColor": "#ffffff"
+          "backgroundColor": "#0b0b0b"
         }
       ],
       "expo-sqlite"

@@ -2,7 +2,9 @@ import CustomText from "@/components/CustomText/CustomText";
 import { GradientText } from "@/components/GradientText/GradientText";
 import LayoutScreen from "@/components/Layout/LayoutScreen";
 import { useLoginStore } from "@/services/stores/auth/useLoginStore";
-import { ScrollView, StyleSheet, View } from "react-native";
+import { Ionicons } from '@expo/vector-icons';
+import { useRouter } from 'expo-router';
+import { Alert, ScrollView, StyleSheet, TouchableOpacity, View } from "react-native";
 
 interface ProfileFieldProps {
   label: string;
@@ -22,8 +24,35 @@ const ProfileField = ({ label, value, isFirst = false }: ProfileFieldProps) => (
 );
 
 export default function ProfileScreen() {
-  const { user, loading } = useLoginStore();
-  
+  const { user, loading, logout } = useLoginStore();
+  const router = useRouter();
+
+  const handleLogout = async () => {
+    Alert.alert(
+      'Logout',
+      'Are you sure you want to log out?',
+      [
+        {
+          text: 'Cancel',
+          style: 'cancel',
+        },
+        {
+          text: 'Logout',
+          style: 'destructive',
+          onPress: async () => {
+            const success = await logout();
+            if (success) {
+              router.replace('/auth/login');
+            } else {
+              Alert.alert('Error', 'Failed to log out. Please try again.');
+            }
+          },
+        },
+      ],
+      { cancelable: true }
+    );
+  };
+
   if (loading) {
     return (
       <LayoutScreen>
@@ -46,6 +75,7 @@ export default function ProfileScreen() {
   });
 
   const reduceName = (name: string) => {
+    if (!name) return ''
     return name.charAt(0).toUpperCase() + name.charAt(1).toUpperCase()
   }
 
@@ -82,6 +112,15 @@ export default function ProfileScreen() {
         </View>
 
         <View style={styles.footer}>
+          <TouchableOpacity 
+            style={styles.logoutButton}
+            onPress={handleLogout}
+          >
+            <Ionicons name="log-out-outline" size={20} color="#FF6B6B" />
+            <CustomText style={styles.logoutButtonText}>
+              Logout
+            </CustomText>
+          </TouchableOpacity>
           <CustomText style={styles.footerText}>
             Made with ❤️ by Anthony
           </CustomText>
@@ -95,7 +134,6 @@ export default function ProfileScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#121212',
   },
   header: {
     alignItems: 'center',
@@ -154,6 +192,26 @@ const styles = StyleSheet.create({
   footer: {
     alignItems: 'center',
     padding: 24,
+    gap: 20,
+  },
+  logoutButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'rgba(255, 107, 107, 0.1)',
+    paddingVertical: 12,
+    paddingHorizontal: 24,
+    borderRadius: 8,
+    borderWidth: 1,
+    borderColor: 'rgba(255, 107, 107, 0.2)',
+    width: '100%',
+    maxWidth: 200,
+  },
+  logoutButtonText: {
+    color: '#FF6B6B',
+    fontSize: 16,
+    fontWeight: '600',
+    marginLeft: 8,
   },
   footerText: {
     color: '#666666',

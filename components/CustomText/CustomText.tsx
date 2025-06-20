@@ -6,6 +6,7 @@ type CustomTextProps = {
     onPress?: (event: GestureResponderEvent) => void;
     color?: string;
     weight?: 'normal' | '600' | 'bold' | '100' | '200' | '300' | '400' | '500' | '700' | '800' | '900';
+    ellipsizeMode?: 'head' | 'middle' | 'tail' | 'clip';
 };
 
 const styles = StyleSheet.create({
@@ -16,7 +17,7 @@ const styles = StyleSheet.create({
     }
 });
 
-export default function CustomText({ children, style, onPress, color, weight }: CustomTextProps) {
+export default function CustomText({ children, style, onPress, color, weight, ellipsizeMode }: CustomTextProps) {
     const textStyle = [
         styles.text,
         color && { color },
@@ -26,7 +27,7 @@ export default function CustomText({ children, style, onPress, color, weight }: 
     if (onPress) {
         return (
             <TouchableOpacity onPress={onPress}>
-                <Text style={textStyle}>{children}</Text>
+                <Text style={textStyle} ellipsizeMode={ellipsizeMode}>{children}</Text>
             </TouchableOpacity>
         );
     }
