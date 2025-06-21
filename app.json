@@ -14,7 +14,7 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/anx/anx_rd.png",
-        "backgroundColor": "#0b0b0b"
+        "backgroundColor": "#f4f4f5"
       },
       "edgeToEdgeEnabled": true,
       "package": "com.cursewlx.anxstreakappv2"
@@ -32,7 +32,7 @@
           "image": "./assets/images/anx/anx_rd.png",
           "imageWidth": 200,
           "resizeMode": "contain",
-          "backgroundColor": "#0b0b0b"
+          "backgroundColor": "#f4f4f5"
         }
       ],
       "expo-sqlite",
